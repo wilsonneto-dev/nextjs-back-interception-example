@@ -8,8 +8,8 @@ const PopUp = () => {
 		are you sure to return? &nbsp;
 		<input type="button" onClick={
 			() => {
-				router.beforePopState(() => true)
-				router.back()
+				router.beforePopState(() => true) // just to clear the callback
+				router.back() // execute the return navigation
 			}
 		} value="yes" />
 	</div>
@@ -21,10 +21,9 @@ const AnotherPage: NextPage = () => {
 
 	useEffect(() => {
 		router.beforePopState(() => { 
-			setShowPopup(true); 
-			console.log('stopped');
-			history.go(1)
-			return false 
+			setShowPopup(true); // just to show the "popup"
+			history.go(1) // just to avoid URL route changing
+			return false  // to stop the returning proccess
 		});
 	}, []);
 
